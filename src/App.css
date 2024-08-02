@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'BluuNext-Bold', sans-serif;
+  text-align: center;
+}
+
+#golden-snitch {
+  transition: left 0.5s, top 0.5s;
+}
+
+.key {
+  transition: left 0.5s, top 0.5s;
+}
+
+#timer-display {
+  margin-top: 20px;
+}
+
+@font-face {
+  font-family: 'BluuNext-Bold';
+  src: url('./BluuNext-Bold.woff2') format('woff2'),
+    url('./BluuNext-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BluuNext-Bolditalic';
+  src: url('./BluuNext-Bolditalic.woff2') format('woff2'),
+    url('./BluuNext-Bolditalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'BluuNext-Titling';
+  src: url('./BluuNext-Titling.woff2') format('woff2'),
+    url('./BluuNext-Titling.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

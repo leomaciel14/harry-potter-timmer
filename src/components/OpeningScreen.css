@@ -1,0 +1,326 @@
+#trem {
+    height: fit-content;
+    background-size: cover;
+    animation: moveTrem 10s linear infinite;
+}
+
+@keyframes moveTrem {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+#mountain1 {
+    height: fit-content;
+    background-size: cover;
+    animation: moveMountains 10s linear infinite;
+}
+
+#mountain2 {
+    transform: translateX(-100%);
+    height: fit-content;
+    background-size: cover;
+    animation: moveMountains 15s linear infinite;
+    animation-delay: 10s;
+}
+
+#mountain3 {
+    height: fit-content;
+    background-size: cover;
+    animation: moveMountains 20s linear infinite;
+}
+
+#mountain4 {
+    transform: translateX(-100%);
+    height: fit-content;
+    background-size: cover;
+    animation: moveMountains 30s linear infinite;
+    animation-delay: 15s;
+}
+
+@keyframes moveMountains {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+#focus-in-expand-fwd {
+    -webkit-animation: focus-in-expand-fwd 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: focus-in-expand-fwd 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes focus-in-expand-fwd {
+    0% {
+        letter-spacing: -0.5em;
+        -webkit-transform: translateZ(-800px);
+        transform: translateZ(-800px);
+        -webkit-filter: blur(12px);
+        filter: blur(12px);
+        opacity: 0;
+
+    }
+
+    100% {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-filter: blur(0);
+        filter: blur(0);
+        opacity: 1;
+
+    }
+}
+
+@keyframes focus-in-expand-fwd {
+    0% {
+        letter-spacing: -0.5em;
+        -webkit-transform: translateZ(-800px);
+        transform: translateZ(-800px);
+        -webkit-filter: blur(12px);
+        filter: blur(12px);
+        opacity: 0;
+        scale: 0.5;
+    }
+
+    100% {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-filter: blur(0);
+        filter: blur(0);
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+
+#text-focus-in {
+    -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation-delay: 3s;
+}
+
+@-webkit-keyframes text-focus-in {
+    0% {
+        -webkit-filter: blur(12px);
+        filter: blur(12px);
+        opacity: 0;
+        scale: 0.8;
+    }
+
+    100% {
+        -webkit-filter: blur(0px);
+        filter: blur(0px);
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+@keyframes text-focus-in {
+    0% {
+        -webkit-filter: blur(12px);
+        filter: blur(12px);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-filter: blur(0px);
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
+
+#btn-in {
+    opacity: 0%;
+    animation: btn-in 2s forwards ease-in;
+    animation-duration: 2s;
+    animation-delay: 4s;
+}
+
+@keyframes btn-in {
+    0% {
+        opacity: 0%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+
+.envelope {
+    position: relative;
+    width: 400px;
+    height: 300px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    top: 200px;
+    background-color: #e1cfb4;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.cover {
+    position: absolute;
+    height: 0px;
+    width: 0px;
+}
+
+.cover.top {
+    border-left: 200px solid transparent;
+    border-right: 200px solid transparent;
+    border-bottom: 150px solid transparent;
+    border-top: 150px solid #c39d68;
+    transform-origin: top;
+    z-index: 10;
+}
+
+.cover.top::after {
+    content: "";
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    background-image: url('./selo.webp');
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    z-index: 20;
+}
+
+
+.cover.bot-r {
+    border-left: 200px solid transparent;
+    border-right: 200px solid #cbb391;
+    border-bottom: 150px solid #c9a776;
+    border-top: 150px solid transparent;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    z-index: 5;
+}
+
+.cover.left {
+    border-left: 200px solid #cbb391;
+    border-right: 200px solid transparent;
+    border-bottom: 150px solid transparent;
+    border-top: 150px solid transparent;
+    border-bottom-left-radius: 10px;
+    z-index: 5;
+}
+
+.letter {
+    background: #dedede;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+;
+}
+
+.open{
+    transform: rotateX(180deg);
+    transition: transform 0.4s ease;
+    z-index: 1;
+}
+
+.close {
+    transform: rotateX(0deg);
+    transition: transform 0.4s 0.4s ease;
+    z-index: 5;
+}
+
+.in {
+    transform: translateY(0px);
+    transition: transform 0.4s ease;
+    z-index: 3;
+}
+
+.out-partial{
+    transform: translateY(-100px);
+    transition: transform 0.4s 0.6s ease;
+    z-index: 3;
+}
+
+@keyframes pullLetter {
+    0% {
+        transform: translateY(-100px);
+    }
+    35%{
+        transform: translateY(-200px);
+    }
+    70%{
+        transform: translateY(-300px);
+    }
+    100%{
+        transform: translateY(-300px);
+    }
+}
+
+@keyframes putLetter {
+    0% {
+        transform: translateY(-300px) scale(1);
+    }
+    25%{
+        transform: translateY(-300px) scale(1.25);
+    }
+    50%{
+        transform: translateY(-200px) scale(1.5);
+    }
+    75%{
+        transform: translateY(-100px) scale(1.75);
+    }
+    100%{
+        transform: translateY(0px) scale(2);
+    }
+}
+
+.pull{
+    animation-name: pullLetter;
+    animation-timing-function: linear;
+    animation-duration: 1s;
+}
+.put{
+    animation-name: putLetter;
+    animation-timing-function: linear;
+    animation-duration: 1s;
+}
+.final{
+    z-index: 20;
+    animation-name: putLetter;
+    transform: translateY(0px) scale(2);
+}
+.no-interaction {
+    pointer-events: none;
+}
+
+
+@keyframes letter-in {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+#letter-in {
+    transform: translateY(100%);
+}
+
+#letter-in.animate {
+    animation: letter-in 2s forwards;
+}
