@@ -42,3 +42,7 @@ body {
   font-weight: normal;
   font-style: normal;
 }
+
+#volumeControl{
+  z-index: 9999;
+}

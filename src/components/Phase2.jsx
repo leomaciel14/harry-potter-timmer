@@ -1,11 +1,28 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AudioControler from './AudioControler';
+import Timer from './Timer';
 import '../App.css';
+import './Phase2.css';
 
 const Phase2 = () => {
     const navigate = useNavigate();
-    const numberOfKeys = 15; // Número de chaves que você quer criar
-    const correctKeyId = 'key-2'; // ID da chave correta
+    const numberOfKeys = 25;
+    const correctKeyId = 'key-2';
+
+    const [startClosingAnimation, setStartClosingAnimation] = useState(false);
+    const [showTimer, setShowTimer] = useState(false);
+    const [isOuterButtonVisible] = useState(true);
+
+    const handleOuterButtonClick = () => {
+        const title = document.getElementById('title');
+
+        title.classList.add('animate-out');
+        setTimeout(() => {
+            title.classList.add('hidden');
+        }, 1000);
+
+    };
 
     useEffect(() => {
         const keys = document.querySelectorAll('.key');
@@ -43,14 +60,29 @@ const Phase2 = () => {
         }
 
         function handleKeyClick(key) {
+            const openDoor = document.getElementById('open-door');
+            const keys = document.getElementById('keys-container');
+            const doorLeft = document.getElementById('doorLeft');
+            const doorRight = document.getElementById('doorRight');
+
             if (key.id === correctKeyId) {
-                alert('Você encontrou a chave correta! A porta se abre.');
-                document.getElementById('door').textContent = '🚪🔓';
+
+                document.getElementById('phase-2').classList.add('scale-animation');
+
+                openDoor.volume = 1;
+                openDoor.play();
+
+                doorLeft.classList.add('openDoorLeft')
+                doorRight.classList.add('openDoorRight')
+
+                keys.classList.add('z-50')
+
                 setTimeout(() => {
-                    navigate('/timer');
-                }, 1000); // 1 segundo antes de navegar para o timer
+                }, 2000);
+                setShowTimer(true);
+
             } else {
-                key.style.display = 'none'; // Remover chave errada
+                key.style.display = 'none';
             }
         }
 
@@ -72,19 +104,46 @@ const Phase2 = () => {
     }, [navigate]);
 
     return (
-        <div id="phase-2" className='w-full h-dvh bg-yellow-50 relative'>
-            <div id="door" className='text-6xl flex items-center justify-center w-full h-full'>🚪</div>
-            <div id="keys-container" className='absolute inset-0'>
-                {Array.from({ length: numberOfKeys }).map((_, index) => (
-                    <img
-                        key={index}
-                        className="key absolute w-20 cursor-pointer"
-                        id={`key-${index + 1}`}
-                        src="chave.gif"
-                        alt={`Key ${index + 1}`}
-                    />
-                ))}
+        <div id="phase-2" className='w-full h-full'>
+
+            <audio id="background-music" src="Flying-Keys.mp3" loop></audio>
+            <audio id="open-door" src="open-door.wav"></audio>
+            <AudioControler />
+
+            <div id='title' className='absolute flex flex-col items-center justify-center w-full h-dvh z-50 bg-black/50 backdrop-blur-xl'>
+                <h1 id='focus-in-expand-fwd' className='text-white text-8xl text-center p-5'>2º Desafio</h1>
+                <p id='text-focus-in' className='text-white text-3xl text-center bluu-next-bolditalic '>Encontre a chave certa!</p>
+                {isOuterButtonVisible && (
+                    <button id='btn-in' onClick={handleOuterButtonClick} className='mt-12 px-5 py-2 border-2 border-white/40 rounded-full text-white/50 text-xl hover:text-white hover:border-white hover:scale-105 transition-all'>Continuar</button>
+                )}
             </div>
+
+            <div className='absolute w-full h-full bg-stone-700'>
+                <div className='absolute w-full h-full overflow-hidden bg-[url("daedalian-keys-bg.webp")] bg-cover bg-center brightness-50'></div>
+                <div id='doorLeft' className='absolute w-full h-full overflow-hidden bg-[url("door-a.webp")] bg-cover bg-center brightness-75'></div>
+                <div id='doorRight' className='absolute w-full h-full overflow-hidden bg-[url("door-b.webp")] bg-cover bg-center brightness-75'></div>
+                <div id="keys-container" className='inset-0'>
+                    {Array.from({ length: numberOfKeys }).map((_, index) => (
+                        <img
+                            key={index}
+                            className="key absolute w-20 cursor-pointer"
+                            id={`key-${index + 1}`}
+                            src="chave.gif"
+                            alt={`Key ${index + 1}`}
+                        />
+                    ))}
+                </div>
+            </div>
+
+            {showTimer && (
+                <div className='timer-container'>
+                    <Timer />
+                </div>
+            )}
+
+            <img id='transition-left' src="left.png" alt="" className={`fixed w-full left-0 h-dvh overflow-hidden ${startClosingAnimation ? 'closing' : ''}`} />
+            <img id='transition-right' src="right.png" alt="" className={`fixed w-full right-0 h-dvh overflow-hidden ${startClosingAnimation ? 'closing' : ''}`} />
+
         </div>
     );
 };

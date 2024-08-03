@@ -324,3 +324,59 @@
 #letter-in.animate {
     animation: letter-in 2s forwards;
 }
+
+#transition-left {
+    animation: transition-left 2s forwards ease-in-out;
+    pointer-events: none;
+    z-index: 999;
+}
+
+@keyframes transition-left {
+    0% {
+        transform: translateX(0%) scale(1);
+    }
+    100% {
+        transform: translateX(-100%) scale(2);
+    }
+}
+
+#transition-right {
+    animation: transition-right 2s forwards ease-in-out;
+    pointer-events: none;
+    z-index: 999;
+}
+
+@keyframes transition-right {
+    0% {
+        transform: translateX(0%) scale(1);
+    }
+    100% {
+        transform: translateX(100%) scale(2);
+    }
+}
+
+.closing#transition-left {
+    animation: transition-left-reverse 2s forwards ease-in-out;
+}
+
+@keyframes transition-left-reverse {
+    0% {
+        transform: translateX(-100%) scale(2);
+    }
+    100% {
+        transform: translateX(0%) scale(1);
+    }
+}
+
+.closing#transition-right {
+    animation: transition-right-reverse 2s forwards ease-in-out;
+}
+
+@keyframes transition-right-reverse {
+    0% {
+        transform: translateX(100%) scale(2);
+    }
+    100% {
+        transform: translateX(0%) scale(1);
+    }
+}

@@ -9,6 +9,7 @@ import './App.css';
 const App = () => {
   const handleStart = () => {
     console.log('Game started');
+    
     // Qualquer outra lógica de inicialização
   };
 

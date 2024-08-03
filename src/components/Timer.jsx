@@ -95,43 +95,46 @@ const Timer = () => {
     };
 
     return (
-        <div id="phase-2" className='w-full h-dvh flex flex-col items-center justify-center m-auto bg-yellow-200'>
+        <div id="phase-2" className='w-full h-full flex flex-col items-center justify-center'>
+            <div className='absolute w-full h-full overflow-hidden bg-[url("chamber.webp")] bg-cover bg-center brightness-50 -z-40'></div>
             <div id='pulse'>
                 <video
                     id="timer-video"
-                    className="w-60"
+                    className="w-40 mt-12"
                     src="viratempo.webm"
                     ref={videoRef}
                     style={{ animation: 'spin 2s linear infinite' }}
                     loop
                 />
             </div>
+            
             <div id="timer-setup" className='p-4 flex items-center justify-center'>
                 {!hasStarted && (
                     <>
-                        <input className='p-4 w-1/4 mr-2 text-center rounded-xl' type="number" id="hours" placeholder="Horas" />
-                        <p>:</p>
-                        <input className='p-4 w-1/4 mx-2 text-center rounded-xl' type="number" id="minutes" placeholder="Minutos" />
-                        <p>:</p>
-                        <input className='p-4 w-1/4 ml-2 text-center rounded-xl' type="number" id="seconds" placeholder="Segundos" />
+                        <input className='p-4 w-24 text-center rounded-xl bg-stone-950/80 bg-blend-multiply text-white text-xl' type="number" id="hours" placeholder="HH" />
+                        <p className='text-white' >:</p>
+                        <input className='p-4 w-24 mx-2 text-center rounded-xl bg-stone-950/80 bg-blend-multiply text-white text-xl' type="number" id="minutes" placeholder="MM" />
+                        <p className='text-white' >:</p>
+                        <input className='p-4 w-24 text-center rounded-xl bg-stone-950/80 bg-blend-multiply text-white text-xl' type="number" id="seconds" placeholder="SS" />
                     </>
                 )}
                 {hasStarted && !timeUp && (
-                    <div id="timer-display" className={`my-4 ${!isRunning ? 'animate-blink' : ''}`}>
-                        <span id="time" className='text-3xl font-bold'>{formatTime(timer)}</span>
+                    <div id="timer-display" className={`text-white my-4 ${!isRunning ? 'animate-blink' : ''}`}>
+                        <span id="time" className='text-5xl font-bold'>{formatTime(timer)}</span>
                     </div>
                 )}
                 {timeUp && (
-                    <div id="time-up-message" className='my-4'>
+                    <div id="time-up-message" className='text-white my-4'>
                         <p className='text-3xl font-bold'>Tempo esgotado!</p>
-                        <button className='mt-4 px-5 py-4 bg-blue-500 text-white rounded-xl font-bold' onClick={resetTimer}>Novo Timer</button>
+                        <button className='mt-4 px-5 py-4 bg-yellow-950/90 border-2 border-yellow-800 hover:border-yellow-950 hover:bg-yellow-600/90 transition-all duration-500 text-white rounded-xl font-bold uppercase text-md' onClick={resetTimer}>Novo Timer</button>
                     </div>
                 )}
             </div>
+
             <div className='flex space-x-4'>
-                {!hasStarted && <button className='font-bluu-next px-5 py-4 bg-black text-white rounded-xl font-bold' onClick={handleStart}>Start Timer</button>}
-                {hasStarted && !timeUp && <button className='px-5 py-4 bg-black text-white rounded-xl font-bold' onClick={toggleTimer}>{isRunning ? 'Pause Timer' : 'Resume Timer'}</button>}
-                {hasStarted && !timeUp && <button className='px-5 py-4 bg-red-500 text-white rounded-xl font-bold' onClick={stopTimer}>Stop Timer</button>}
+                {!hasStarted && <button className='font-bluu-next px-8 py-4 bg-yellow-950/90 border-2 border-yellow-800 hover:border-yellow-950 hover:bg-yellow-600/90 transition-all duration-500 text-white rounded-xl font-bold uppercase text-md' onClick={handleStart}>Iniciar</button>}
+                {hasStarted && !timeUp && <button className='px-5 py-4 bg-stone-900/90 hover:bg-stone-600/90 transition-all text-white rounded-xl font-bold' onClick={toggleTimer}>{isRunning ? 'Pause Timer' : 'Resume Timer'}</button>}
+                {hasStarted && !timeUp && <button className='px-5 py-4 bg-red-900/90 hover:bg-red-600/90 transition-all text-white rounded-xl font-bold' onClick={stopTimer}>Stop Timer</button>}
             </div>
         </div>
     );

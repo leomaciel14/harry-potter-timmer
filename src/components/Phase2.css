@@ -1,0 +1,53 @@
+.scale-animation {
+    animation: scale-up 1s ease-in-out;
+    animation-iteration-count: 1;
+}
+
+
+.timer-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 650px; /* Ajuste o tamanho conforme necessário */
+    height: 650px; /* Ajuste o tamanho conforme necessário */
+    border-radius: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.openDoorLeft{
+    animation: openDoorLeft 3s forwards;
+    animation-delay: 0.5s;
+    z-index: 10;
+    overflow-x: hidden;
+    pointer-events: none;
+}
+
+@keyframes openDoorLeft {
+    0%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(-20%);
+    }
+}
+
+.openDoorRight{
+    animation: openDoorRight 3s forwards;
+    animation-delay: 0.8s;
+    z-index: 10;
+    overflow-x: hidden;
+    pointer-events: none;
+}
+
+@keyframes openDoorRight {
+    0%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(20%);
+    }
+}
