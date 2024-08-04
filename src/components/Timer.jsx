@@ -96,7 +96,6 @@ const Timer = () => {
 
     return (
         <div id="phase-2" className='w-full h-full flex flex-col items-center justify-center'>
-            <div className='absolute w-full h-full overflow-hidden bg-[url("chamber.webp")] bg-cover bg-center brightness-50 -z-40'></div>
             <div id='pulse'>
                 <video
                     id="timer-video"

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import AudioControler from './AudioControler';
 import '../App.css';
 import './Phase1.css';
+import Credits from './Credits';
 
 const Phase1 = () => {
     const [startClosingAnimation, setStartClosingAnimation] = useState(false);
@@ -118,6 +119,8 @@ const Phase1 = () => {
 
         <div className="w-full h-full">
 
+            <Credits />
+
             <audio id="background-music" src="Harry Potter Quidditch Themes (Suite).mp3" loop></audio>
             <audio id="wings_fast" src="Wings_Fast.mp3"></audio>
             <audio id="wings_slow" src="Wings_Slow.mp3"></audio>
@@ -134,7 +137,7 @@ const Phase1 = () => {
 
             <div id="game" className='absolute w-full h-full overflow-hidden'>
                 <div className='absolute w-full h-full overflow-hidden bg-cover bg-center brightness-50'>
-                    <img src="./quadrilball.webp" alt="" />
+                    <img src="./quadrilball.webp" alt="" className='h-full w-full' />
                 </div>
                 <img
                     id="golden-snitch"

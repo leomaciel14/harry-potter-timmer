@@ -4,11 +4,12 @@ import AudioControler from './AudioControler';
 import Timer from './Timer';
 import '../App.css';
 import './Phase2.css';
+import Credits from './Credits';
 
 const Phase2 = () => {
     const navigate = useNavigate();
     const numberOfKeys = 25;
-    const correctKeyId = 'key-2';
+    const correctKeyId = 'key-1';
 
     const [startClosingAnimation, setStartClosingAnimation] = useState(false);
     const [showTimer, setShowTimer] = useState(false);
@@ -16,12 +17,10 @@ const Phase2 = () => {
 
     const handleOuterButtonClick = () => {
         const title = document.getElementById('title');
-
         title.classList.add('animate-out');
         setTimeout(() => {
             title.classList.add('hidden');
         }, 1000);
-
     };
 
     useEffect(() => {
@@ -61,24 +60,48 @@ const Phase2 = () => {
 
         function handleKeyClick(key) {
             const openDoor = document.getElementById('open-door');
+            const rightKey = document.getElementById('right-key');
             const keys = document.getElementById('keys-container');
             const doorLeft = document.getElementById('doorLeft');
             const doorRight = document.getElementById('doorRight');
+            const playback = document.getElementById('background-music')
+
+            const fadeOutVolume = (audioElement, duration, callback) => {
+                const step = audioElement.volume / (duration / 50);
+
+                const fadeAudio = setInterval(() => {
+                    if (audioElement.volume > 0.05) {
+                        audioElement.volume -= step;
+                    } else {
+                        clearInterval(fadeAudio);
+                        audioElement.volume = 0;
+                        if (callback) callback();
+                    }
+                }, 50);
+            };
+
 
             if (key.id === correctKeyId) {
 
-                document.getElementById('phase-2').classList.add('scale-animation');
+                fadeOutVolume(playback, 2000, () => {
+                    setTimeout(() => {
+                        playback.src = 'The-Resurrection-Stone.mp3';
+                        playback.volume = 0.8
+                        playback.play();
+                    }, 1000);
+                });
 
-                openDoor.volume = 1;
+                openDoor.volume = 0.7;
+                rightKey.volume = 0.2;
                 openDoor.play();
+                rightKey.play();
 
                 doorLeft.classList.add('openDoorLeft')
                 doorRight.classList.add('openDoorRight')
 
                 keys.classList.add('z-50')
 
-                setTimeout(() => {
-                }, 2000);
+                key.style.display = 'none';
                 setShowTimer(true);
 
             } else {
@@ -102,12 +125,14 @@ const Phase2 = () => {
             });
         };
     }, [navigate]);
-
+    
     return (
-        <div id="phase-2" className='w-full h-full'>
+        <div id="phase-2" className='w-full h-dvh'>
+            <Credits />
 
             <audio id="background-music" src="Flying-Keys.mp3" loop></audio>
             <audio id="open-door" src="open-door.wav"></audio>
+            <audio id="right-key" src="harp-piano-dreamy.mp3"></audio>
             <AudioControler />
 
             <div id='title' className='absolute flex flex-col items-center justify-center w-full h-dvh z-50 bg-black/50 backdrop-blur-xl'>
@@ -119,9 +144,15 @@ const Phase2 = () => {
             </div>
 
             <div className='absolute w-full h-full bg-stone-700'>
-                <div className='absolute w-full h-full overflow-hidden bg-[url("daedalian-keys-bg.webp")] bg-cover bg-center brightness-50'></div>
-                <div id='doorLeft' className='absolute w-full h-full overflow-hidden bg-[url("door-a.webp")] bg-cover bg-center brightness-75'></div>
-                <div id='doorRight' className='absolute w-full h-full overflow-hidden bg-[url("door-b.webp")] bg-cover bg-center brightness-75'></div>
+                <div className='absolute w-full h-dvh overflow-hidden bg-cover bg-center brightness-50'>
+                    <img src="./daedalian-keys-bg.webp" alt="" className='h-full w-full' />
+                </div>
+                <div id='doorLeft' className='absolute w-full h-full overflow-hidden bg-cover bg-center brightness-75'>
+                    <img src="./door-a.webp" alt="" className='h-full w-full' />
+                </div>
+                <div id='doorRight' className='absolute w-full h-full overflow-hidden bg-cover bg-center brightness-75'>
+                    <img src="./door-b.webp" alt="" className='h-full w-full' />
+                </div>
                 <div id="keys-container" className='inset-0'>
                     {Array.from({ length: numberOfKeys }).map((_, index) => (
                         <img
@@ -143,7 +174,6 @@ const Phase2 = () => {
 
             <img id='transition-left' src="left.png" alt="" className={`fixed w-full left-0 h-dvh overflow-hidden ${startClosingAnimation ? 'closing' : ''}`} />
             <img id='transition-right' src="right.png" alt="" className={`fixed w-full right-0 h-dvh overflow-hidden ${startClosingAnimation ? 'closing' : ''}`} />
-
         </div>
     );
 };

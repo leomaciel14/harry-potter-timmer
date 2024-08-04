@@ -6,22 +6,25 @@ import Phase2 from './components/Phase2';
 import Timer from './components/Timer';
 import './App.css';
 
+
 const App = () => {
   const handleStart = () => {
     console.log('Game started');
-    
+
     // Qualquer outra lógica de inicialização
   };
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<OpeningScreen onStart={handleStart} />} />
-        <Route path="/phase1" element={<Phase1 />} />
-        <Route path="/phase2" element={<Phase2 />} />
-        <Route path="/timer" element={<Timer />} />
-      </Routes>
-    </Router>
+    <div className='overflow-hidden w-full h-full'>
+      <Router>
+        <Routes>
+          <Route path="/" element={<OpeningScreen onStart={handleStart} />} />
+          <Route path="/phase1" element={<Phase1 />} />
+          <Route path="/phase2" element={<Phase2 />} />
+          <Route path="/timer" element={<Timer />} />
+        </Routes>
+      </Router>
+    </div>
   );
 };
 

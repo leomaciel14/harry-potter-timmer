@@ -7,6 +7,7 @@
     0% {
         opacity: 1;
     }
+
     100% {
         opacity: 0;
     }
@@ -21,6 +22,7 @@
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
@@ -30,4 +32,5 @@
     -webkit-user-drag: none;
     user-select: none;
     pointer-events: auto;
+    transition: left 0.5s, top 0.5s;
 }

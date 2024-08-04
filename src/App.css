@@ -3,16 +3,28 @@
 @tailwind utilities;
 
 body {
-  font-family: 'BluuNext-Bold', sans-serif;
+  font-family: 'BluuNext-Bold', "Platypi", sans-serif, serif;
   text-align: center;
+  cursor: url('./Leather_Gloves_icon.webp'), auto;
 }
 
-#golden-snitch {
-  transition: left 0.5s, top 0.5s;
+#volumeControl{
+  z-index: 9999;
 }
 
-.key {
-  transition: left 0.5s, top 0.5s;
+#credits{
+  z-index: 99999;
+}
+
+a:hover, button:hover, p:hover{
+  cursor: url('./Leather_Gloves_icon-close.webp'), auto;
+}
+
+.key:hover {
+  cursor: url('./Leather_Gloves_icon-close.webp'), auto;
+}
+#golden-snitch:hover {
+  cursor: url('./Leather_Gloves_icon-close.webp'), auto;
 }
 
 #timer-display {
@@ -41,8 +53,4 @@ body {
     url('./BluuNext-Titling.woff') format('woff');
   font-weight: normal;
   font-style: normal;
-}
-
-#volumeControl{
-  z-index: 9999;
 }

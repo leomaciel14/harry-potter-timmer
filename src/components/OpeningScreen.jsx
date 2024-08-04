@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AudioControler from './AudioControler';
 import './OpeningScreen.css';
+import Credits from './Credits';
 
 const OpeningScreen = ({ onStart }) => {
     const navigate = useNavigate();
@@ -25,6 +26,7 @@ const OpeningScreen = ({ onStart }) => {
         const letter = document.getElementById('contact');
         const left = document.getElementById('left');
         const bottomRight = document.getElementById('bot-r');
+        const audioLetterParial = document.getElementById('letter-partial');
 
         envelopeTop.classList.remove("close");
         envelopeTop.classList.add("open");
@@ -37,6 +39,8 @@ const OpeningScreen = ({ onStart }) => {
             envelopeTop.style.zIndex = 0;
             left.style.zIndex = 10;
             bottomRight.style.zIndex = 10;
+            audioLetterParial.volume = 0.6;
+            audioLetterParial.play();
         }
     };
 
@@ -85,6 +89,10 @@ const OpeningScreen = ({ onStart }) => {
 
     const handleInnerButtonClick = () => {
         const letterIn = document.getElementById('letter-in');
+        const letterOutAudio = document.getElementById('letterOutAudio')
+
+        letterOutAudio.volume = 0.6;
+        letterOutAudio.play();
 
         letterIn.classList.add('animate');
 
@@ -140,13 +148,16 @@ const OpeningScreen = ({ onStart }) => {
 
     return (
         <div className="opening-screen w-full h-screen bg-gradient-to-b from-indigo-800 to-blue-950 flex m-0 p-0">
-            <AudioControler audioSrc={"A Journey to Hogwarts.mp3"}/>
-            <AudioControler audioSrc={"Train Ride.mp3"}/>
+            <Credits />
+            <AudioControler audioSrc={"A Journey to Hogwarts.mp3"} />
+            <audio id='letter-partial' src="Letter-Partial.mp3"></audio>
+            <audio id='letterOutAudio' src="Letter.mp3"></audio>
+
             <img src="stars.webp" alt="" className='w-screen h-screen absolute' />
-            
+
             <div className='flex flex-col items-center justify-center -translate-y-32 w-full h-full'>
                 <h1 id='focus-in-expand-fwd' className='text-white text-8xl text-center p-5'>Desafios do <br /> Mundo Mágico:</h1>
-                <p id='text-focus-in' className='text-white text-3xl text-center bluu-next-bolditalic '>Prove que Você Não é um Trouxa!</p>
+                <p id='text-focus-in' className='text-white text-3xl text-center bluu-next-bolditalic '>Encontre o Vira-Tempo perdido</p>
                 {isOuterButtonVisible && (
                     <button id='btn-in' onClick={handleOuterButtonClick} className='mt-12 px-5 py-2 border-2 border-white/40 rounded-full text-white/50 text-xl hover:text-white hover:border-white hover:scale-105 transition-all'>Continuar</button>
                 )}
@@ -155,13 +166,15 @@ const OpeningScreen = ({ onStart }) => {
             <div id='letter-in' className='absolute w-full h-2/3 flex items-center justify-center z-50 -translate-y-full'>
                 <div className='envelope' id='envelope'>
                     <div className='cover top' id='top'>
-                        <div className='selo'></div>
+                        <div className='selo'>
+                            <img src="./selo.webp" alt="" />
+                        </div>
                     </div>
                     <div className='cover bot-r' id='bot-r'></div>
                     <div className='cover left' id='left'></div>
                     <div className='letter' id='contact'>
                         {isInnerButtonVisible && (
-                            <button onClick={handleInnerButtonClick} className="px-4 py-2">
+                            <button onClick={handleInnerButtonClick} className="px-4 py-1 bg-[#cdb373] text-sm uppercase mt-2 hover:bg-[#a08c59] cursor-pointer">
                                 Clique para ler
                             </button>
                         )}
