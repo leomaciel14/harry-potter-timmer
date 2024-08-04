@@ -5,7 +5,19 @@
 body {
   font-family: 'BluuNext-Bold', "Platypi", sans-serif, serif;
   text-align: center;
-  cursor: url('./Leather_Gloves_icon.webp'), auto;
+  cursor: url('https://i.ibb.co/jv8Z8mb/Leather-Gloves-icon.webp'), auto;
+}
+
+a:hover, button:hover, p:hover{
+  cursor: url('https://i.ibb.co/myCpCVb/Leather-Gloves-icon-close.webp'), auto;
+}
+
+.key:hover {
+  cursor: url('https://i.ibb.co/myCpCVb/Leather-Gloves-icon-close.webp'), auto;
+}
+
+#golden-snitch:hover {
+  cursor: url('https://i.ibb.co/myCpCVb/Leather-Gloves-icon-close.webp'), auto;
 }
 
 #volumeControl{
@@ -14,17 +26,6 @@ body {
 
 #credits{
   z-index: 99999;
-}
-
-a:hover, button:hover, p:hover{
-  cursor: url('./Leather_Gloves_icon-close.webp'), auto;
-}
-
-.key:hover {
-  cursor: url('./Leather_Gloves_icon-close.webp'), auto;
-}
-#golden-snitch:hover {
-  cursor: url('./Leather_Gloves_icon-close.webp'), auto;
 }
 
 #timer-display {
