@@ -133,7 +133,9 @@ const Phase1 = () => {
             </div>
 
             <div id="game" className='absolute w-full h-full overflow-hidden'>
-                <div className='absolute w-full h-full overflow-hidden bg-[url("quadrilball.webp")] bg-cover bg-center brightness-50'></div>
+                <div className='absolute w-full h-full overflow-hidden bg-cover bg-center brightness-50'>
+                    <img src="./quadrilball.webp" alt="" />
+                </div>
                 <img
                     id="golden-snitch"
                     className='absolute w-52 cursor-pointer transition-all'
