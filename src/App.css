@@ -6,6 +6,7 @@ body {
   font-family: 'BluuNext-Bold', "Platypi", sans-serif, serif;
   text-align: center;
   cursor: url('https://i.ibb.co/jv8Z8mb/Leather-Gloves-icon.webp'), auto;
+  font-variant-ligatures: none; 
 }
 
 a:hover, button:hover, p:hover{
