@@ -174,17 +174,16 @@ const OpeningScreen = ({ onStart }) => {
                     <div className='cover left' id='left'></div>
                     <div className='letter' id='contact'>
                         {isInnerButtonVisible && (
-                            <button onClick={handleInnerButtonClick} className="px-4 py-1 bg-[#cdb373] text-sm uppercase mt-2 hover:bg-[#a08c59] cursor-pointer">
-                                Clique para ler
+                            <button onClick={handleInnerButtonClick} className="px-4 py-1 bg-[#cdb373] text-sm uppercase mt-1 hover:bg-[#a08c59] cursor-pointer">
+                                Clique aqui para ler
                             </button>
                         )}
-                        <div className='w-80 flex flex-col items-center justify-center m-auto'>
-                            <div>
-                                <a href="/phase1" className='cursor-pointer'>
-                                    <p className='text-black text-2xl text-center font-normal mt-4'>Bem-vindo ao Mundo Mágico, jovem bruxo!</p>
-                                    <p className='text-black text-sm text-center font-normal mt-3'>Para acessar o poderoso Vira-Tempo e controlar o tempo, você deve primeiro provar que não é um trouxa. Enfrente os desafios mágicos que se seguem e mostre sua habilidade e astúcia.</p>
-                                    <p className='text-black text-base text-center font-normal mt-2'>Boa sorte!</p>
-                                    <button className='bg-[#cdb373] px-4 py-2 text-sm uppercase mt-2 hover:bg-[#a08c59] cursor-pointer'>Aceito o desafio!</button>
+                        <div className='w-80 flex flex-col h-full items-center justify-start m-auto'>
+                            <div className='w-full h-full flex items-center justify-center' >
+                                <a href="/phase1" className='cursor-pointer flex flex-col items-center justify-center'>
+                                    <p className='text-black text-xl text-center font-normal mt-2'>Bem-vindo ao Mundo Mágico, jovem bruxo!</p>
+                                    <p className='text-black text-sm text-center font-normal mt-2'>Para acessar o poderoso Vira-Tempo e controlar o tempo, você deve primeiro provar que não é um trouxa. Enfrente os desafios mágicos que se seguem e mostre sua habilidade e astúcia. Boa sorte!</p>
+                                    <button className='bg-[#cdb373] px-4 py-1 text-sm uppercase mt-4 hover:bg-[#a08c59] cursor-pointer'>Aceito o desafio!</button>
                                 </a>
                             </div>
                         </div>

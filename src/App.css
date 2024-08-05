@@ -9,6 +9,10 @@ body {
   font-variant-ligatures: none; 
 }
 
+h1{
+  font-variant-ligatures: none; 
+}
+
 a:hover, button:hover, p:hover{
   cursor: url('https://i.ibb.co/myCpCVb/Leather-Gloves-icon-close.webp'), auto;
 }

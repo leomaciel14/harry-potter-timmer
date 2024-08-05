@@ -20,8 +20,8 @@
 }
 
 .openDoorLeft {
-    animation: openDoorLeft 3s forwards;
-    animation-delay: 0.5s;
+    animation: openDoorLeft 4s forwards;
+    animation-delay: 1.5s;
     z-index: 10;
     overflow: hidden;
     pointer-events: none;
@@ -38,8 +38,8 @@
 }
 
 .openDoorRight {
-    animation: openDoorRight 3s forwards;
-    animation-delay: 0.8s;
+    animation: openDoorRight 4s forwards;
+    animation-delay: 1.8s;
     z-index: 10;
     overflow: hidden;
     pointer-events: none;

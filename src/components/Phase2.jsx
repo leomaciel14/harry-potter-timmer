@@ -61,6 +61,7 @@ const Phase2 = () => {
         function handleKeyClick(key) {
             const openDoor = document.getElementById('open-door');
             const rightKey = document.getElementById('right-key');
+            const wrongKey = document.getElementById('wrong-key');
             const keys = document.getElementById('keys-container');
             const doorLeft = document.getElementById('doorLeft');
             const doorRight = document.getElementById('doorRight');
@@ -91,20 +92,22 @@ const Phase2 = () => {
                     }, 1000);
                 });
 
-                openDoor.volume = 0.7;
-                rightKey.volume = 0.2;
+                openDoor.volume = 0.6;
+                rightKey.volume = 0.4;
                 openDoor.play();
                 rightKey.play();
-
+                
                 doorLeft.classList.add('openDoorLeft')
                 doorRight.classList.add('openDoorRight')
-
+                
                 keys.classList.add('z-50')
-
+                
                 key.style.display = 'none';
                 setShowTimer(true);
-
+                
             } else {
+                wrongKey.volume = 0.3;
+                wrongKey.play();
                 key.style.display = 'none';
             }
         }
@@ -131,8 +134,9 @@ const Phase2 = () => {
             <Credits />
 
             <audio id="background-music" src="Flying-Keys.mp3" loop></audio>
-            <audio id="open-door" src="open-door.wav"></audio>
+            <audio id="open-door" src="open-door.mp3"></audio>
             <audio id="right-key" src="harp-piano-dreamy.mp3"></audio>
+            <audio id="wrong-key" src="wrong_key.mp3"></audio>
             <AudioControler />
 
             <div id='title' className='absolute flex flex-col items-center justify-center w-full h-dvh z-50 bg-black/50 backdrop-blur-xl'>

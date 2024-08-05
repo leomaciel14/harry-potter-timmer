@@ -18,19 +18,22 @@ const Phase1 = () => {
             navigate("/phase2");
         }, 2000);
     };
-
+    
     const navigate = useNavigate();
     const [snitchSpeed, setSnitchSpeed] = useState(200);
     const [snitchCaught, setSnitchCaught] = useState(false);
-
+    
     const handleSnitchCaught = () => {
         const endTitle = document.getElementById('end');
-
+        const winner = document.getElementById('winner');
+        winner.volume = volume;
+        
         if (endTitle) {
             endTitle.classList.remove('opacity-0');
             endTitle.classList.add('animate-in');
             endTitle.classList.remove('-z-50');
             endTitle.classList.add('z-50');
+            winner.play();
         }
 
         setSnitchCaught(true);
@@ -124,6 +127,7 @@ const Phase1 = () => {
             <audio id="background-music" src="Harry Potter Quidditch Themes (Suite).mp3" loop></audio>
             <audio id="wings_fast" src="Wings_Fast.mp3"></audio>
             <audio id="wings_slow" src="Wings_Slow.mp3"></audio>
+            <audio id="winner" src="Catches.mp3"></audio>
 
             <AudioControler />
 

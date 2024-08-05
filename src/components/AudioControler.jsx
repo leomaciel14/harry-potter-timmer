@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 
 const AudioControler = ({ audioSrc }) => {
-    const [volume, setVolume] = useState(0.1);
+    const [volume, setVolume] = useState(() => {
+        const savedVolume = localStorage.getItem('audioVolume');
+        return savedVolume !== null ? parseFloat(savedVolume) : 0.3;
+    });
 
     useEffect(() => {
         const audio = document.getElementById('background-music');
@@ -12,6 +15,7 @@ const AudioControler = ({ audioSrc }) => {
     useEffect(() => {
         const audio = document.getElementById('background-music');
         audio.volume = volume;
+        localStorage.setItem('audioVolume', volume);
     }, [volume]);
     
     const handleVolumeChange = (event) => {
