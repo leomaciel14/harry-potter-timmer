@@ -83,7 +83,8 @@ const Phase2 = () => {
 
 
             if (key.id === correctKeyId) {
-
+                keys.style.display = 'none'
+                
                 fadeOutVolume(playback, 2000, () => {
                     setTimeout(() => {
                         playback.src = 'The-Resurrection-Stone.mp3';
