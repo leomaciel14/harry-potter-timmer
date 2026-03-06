@@ -45,6 +45,19 @@ const OpeningScreen = ({ onStart }) => {
     };
 
     useEffect(() => {
+        const unlockAudio = () => {
+            const audio = document.getElementById("bg-music");
+            if (audio) {
+                audio.play().catch(() => { });
+            }
+
+            document.removeEventListener("click", unlockAudio);
+        };
+
+        document.addEventListener("click", unlockAudio);
+    }, []);
+
+    useEffect(() => {
         const envelope = document.getElementById('envelope');
         const envelopeTop = document.getElementById('top');
 
