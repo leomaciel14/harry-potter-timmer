@@ -44,18 +44,13 @@ const OpeningScreen = ({ onStart }) => {
         }
     };
 
-    useEffect(() => {
-        const unlockAudio = () => {
-            const audio = document.getElementById("bg-music");
-            if (audio) {
-                audio.play().catch(() => { });
-            }
-
-            document.removeEventListener("click", unlockAudio);
-        };
-
-        document.addEventListener("click", unlockAudio);
-    }, []);
+    const startMusic = () => {
+        const audio = document.getElementById("bg-music");
+        if (audio) {
+            audio.volume = 0.5;
+            audio.play().catch(() => { });
+        }
+    };
 
     useEffect(() => {
         const envelope = document.getElementById('envelope');
@@ -172,8 +167,16 @@ const OpeningScreen = ({ onStart }) => {
                 <h1 id='focus-in-expand-fwd' className='text-white text-8xl text-center p-5'>Desafios do <br /> Mundo Mágico:</h1>
                 <p id='text-focus-in' className='text-white text-3xl text-center bluu-next-bolditalic '>Encontre o Vira-Tempo perdido</p>
                 {isOuterButtonVisible && (
-                    <button id='btn-in' onClick={handleOuterButtonClick} className='mt-12 px-5 py-2 border-2 border-white/40 rounded-full text-white/50 text-xl hover:text-white hover:border-white hover:scale-105 transition-all'>Continuar</button>
-                )}
+                    <button
+                        id='btn-in'
+                        onClick={() => {
+                            startMusic();
+                            handleOuterButtonClick();
+                        }}
+                        className='mt-12 px-5 py-2 border-2 border-white/40 rounded-full text-white/50 text-xl hover:text-white hover:border-white hover:scale-105 transition-all'
+                    >
+                        Continuar
+                    </button>)}
             </div>
 
             <div id='letter-in' className='absolute w-full h-2/3 flex items-center justify-center z-50 -translate-y-full'>
